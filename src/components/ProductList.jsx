@@ -48,13 +48,19 @@ function ProductList() {
       </div>
 
       <section className="product-grid">
-        {filteredProducts.map((product) => (
-          <ProductItem
-            key={product.id}
-            product={product}
-          />
-        ))}
-      </section>
+  {filteredProducts.length > 0 ? (
+    filteredProducts.map((product) => (
+      <ProductItem
+        key={product.id}
+        product={product}
+      />
+    ))
+  ) : (
+    <p className="no-products">
+      No products found.
+    </p>
+  )}
+</section>
     </main>
   );
 }

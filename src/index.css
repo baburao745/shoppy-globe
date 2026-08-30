@@ -611,3 +611,11 @@ a {
   font-size: 13px;
   font-weight: 700;
 }
+
+.no-products {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  font-weight: 600;
+}
