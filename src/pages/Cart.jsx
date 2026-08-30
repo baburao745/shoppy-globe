@@ -31,7 +31,9 @@ function Cart() {
       <section className="cart-header">
         <p>YOUR SHOPPING BAG</p>
         <h1>Shopping Cart</h1>
-        <span>{items.length} item(s)</span>
+        <span>
+  {items.reduce((total, item) => total + item.quantity, 0)} item(s)
+</span>
       </section>
 
       <section className="cart-layout">
