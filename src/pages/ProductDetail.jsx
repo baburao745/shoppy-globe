@@ -5,7 +5,6 @@ import { addToCart } from "../store/cartSlice";
 
 function ProductDetail() {
   const { id } = useParams();
-
   const dispatch = useDispatch();
 
   const [product, setProduct] = useState(null);
@@ -27,7 +26,6 @@ function ProductDetail() {
         }
 
         const data = await response.json();
-
         setProduct(data);
       } catch (err) {
         setError(err.message);
@@ -52,7 +50,9 @@ function ProductDetail() {
       <main className="product-detail-page">
         <h1>Product Not Found</h1>
         <p>{error}</p>
-        <Link to="/products">Back to Products</Link>
+        <Link to="/products" className="back-link">
+          ← Back to Products
+        </Link>
       </main>
     );
   }
@@ -95,11 +95,20 @@ function ProductDetail() {
             Discount: {product.discountPercentage}%
           </p>
 
+          <p className="stock-status">
+            {product.stock > 0
+              ? `${product.stock} items available`
+              : "Out of stock"}
+          </p>
+
           <button
             onClick={() => dispatch(addToCart(product))}
+            disabled={product.stock <= 0}
             className="add-cart-button"
           >
-            Add to Cart 🛒
+            {product.stock > 0
+              ? "Add to Cart 🛒"
+              : "Out of Stock"}
           </button>
         </div>
       </section>
