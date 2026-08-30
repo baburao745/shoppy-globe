@@ -1,16 +1,51 @@
-# React + Vite
+# 🛍️ ShoppyGlobe E-commerce
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based e-commerce application built with Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Product listing
+- Product details
+- Shopping cart
+- Add and remove products
+- Increase and decrease quantity
+- Checkout
+- Order placement
+- 404 error page
+- Responsive design
+- Redux state management
+- React Router
+- Product data from DummyJSON API
 
-## React Compiler
+## Technologies
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- JavaScript
+- Redux Toolkit
+- React Redux
+- React Router
+- CSS
 
-## Expanding the ESLint configuration
+## API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Products are fetched from:
+
+https://dummyjson.com/products
+
+## How to Run
+
+Install dependencies:
+
+```bash
+npm install
+
+
+The assignment specifically requires a README and a GitHub repository link in the README. :contentReference[oaicite:0]{index=0}
+
+Save it, then run:
+
+```powershell
+git add README.md
+
+git repo link(https://github.com/baburao745/shoppy-globe.git)
