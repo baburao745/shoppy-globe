@@ -25,8 +25,7 @@ function Cart() {
           <h1>Your Cart is Empty</h1>
 
           <p>
-            Looks like you haven't added anything to your
-            cart yet.
+            Looks like you haven't added anything to your cart yet.
           </p>
 
           <Link to="/products" className="shop-button">
@@ -48,6 +47,7 @@ function Cart() {
       </section>
 
       <section className="cart-layout">
+
         <div className="cart-items">
           {items.map((item) => (
             <CartItem
@@ -80,6 +80,7 @@ function Cart() {
             Proceed to Checkout
           </Link>
         </aside>
+
       </section>
     </main>
   );

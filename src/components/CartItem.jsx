@@ -1,29 +1,38 @@
 import { useDispatch } from "react-redux";
 import {
+  removeFromCart,
   increaseQuantity,
   decreaseQuantity,
-  removeFromCart,
 } from "../store/cartSlice";
+import { formatPrice } from "../utils/currency";
 
 function CartItem({ item }) {
   const dispatch = useDispatch();
 
   return (
-    <article className="cart-item">
+    <div className="cart-item">
+      {/* Product Image */}
       <img
         src={item.thumbnail}
         alt={item.title}
-        loading="lazy"
       />
 
+      {/* Product Information */}
       <div className="cart-item-info">
         <h3>{item.title}</h3>
-        <p>${item.price}</p>
 
+        {/* Product Price */}
+        <p className="cart-item-price">
+          {formatPrice(item.price)}
+        </p>
+
+        {/* Quantity Controls */}
         <div className="quantity-controls">
           <button
-            onClick={() => dispatch(decreaseQuantity(item.id))}
-            disabled={item.quantity === 1}
+            type="button"
+            onClick={() =>
+              dispatch(decreaseQuantity(item.id))
+            }
           >
             −
           </button>
@@ -31,20 +40,35 @@ function CartItem({ item }) {
           <span>{item.quantity}</span>
 
           <button
-            onClick={() => dispatch(increaseQuantity(item.id))}
+            type="button"
+            onClick={() =>
+              dispatch(increaseQuantity(item.id))
+            }
           >
             +
           </button>
         </div>
 
+        {/* Subtotal */}
+        <p className="cart-subtotal">
+          Subtotal:{" "}
+          <strong>
+            {formatPrice(item.price * item.quantity)}
+          </strong>
+        </p>
+
+        {/* Remove */}
         <button
+          type="button"
           className="remove-button"
-          onClick={() => dispatch(removeFromCart(item.id))}
+          onClick={() =>
+            dispatch(removeFromCart(item.id))
+          }
         >
           Remove
         </button>
       </div>
-    </article>
+    </div>
   );
 }
 
