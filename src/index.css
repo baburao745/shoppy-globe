@@ -595,3 +595,19 @@ a {
   font-size: 12px;
   font-weight: 800;
 }
+.product-discount {
+  display: inline-block;
+  margin: 8px 0;
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.stock-status {
+  color: #16a34a;
+  font-size: 13px;
+  font-weight: 700;
+}

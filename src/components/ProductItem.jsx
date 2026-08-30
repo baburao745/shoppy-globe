@@ -25,6 +25,13 @@ function ProductItem({ product }) {
         </p>
 
         <p>⭐ {product.rating}</p>
+        <p className="product-discount">
+        {product.discountPercentage}% OFF
+</p>
+
+<p className="stock-status">
+  {product.stock > 0 ? "In Stock" : "Out of Stock"}
+</p>
 
         <div className="product-actions">
           <Link to={`/product/${product.id}`}>
