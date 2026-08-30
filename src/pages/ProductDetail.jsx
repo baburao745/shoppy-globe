@@ -93,7 +93,7 @@ function ProductDetail() {
             {product.description}
           </p>
 
-          <h2>${product.price}</h2>
+          <h2>₹{product.price}</h2>
 
           <p>
             Discount: {product.discountPercentage}%

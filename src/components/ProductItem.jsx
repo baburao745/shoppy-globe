@@ -26,10 +26,9 @@ function ProductItem({ product }) {
       <div className="product-info">
         <h3>{product.title}</h3>
 
-        <p className="product-price">
-          ${product.price}
-        </p>
-
+       <p className="product-price">
+          ₹{product.price}
+       </p>
         <p>⭐ {product.rating}</p>
 
         <p className="product-discount">

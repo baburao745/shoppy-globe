@@ -59,7 +59,7 @@ function Cart() {
 
           <div className="summary-row total-row">
             <strong>Total</strong>
-            <strong>${total.toFixed(2)}</strong>
+            <strong>₹{total.toFixed(2)}</strong>
           </div>
 
           <Link to="/checkout" className="checkout-button">
