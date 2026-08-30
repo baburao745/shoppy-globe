@@ -10,22 +10,25 @@ function Cart() {
     0
   );
 
-  if (items.length === 0) {
-    return (
-      <main className="cart-page empty-cart">
-        <h1>Your Cart is Empty 🛒</h1>
+ if (items.length === 0) {
+  return (
+    <main className="cart-page empty-cart">
+      <div className="empty-cart-card">
+        <div className="empty-cart-icon">🛒</div>
+
+        <h1>Your Cart is Empty</h1>
 
         <p>
-          You haven't added any products yet.
+          Looks like you haven't added anything to your cart yet.
         </p>
 
         <Link to="/products" className="shop-button">
-          Continue Shopping
+          Start Shopping →
         </Link>
-      </main>
-    );
-  }
-
+      </div>
+    </main>
+  );
+}
   return (
     <main className="cart-page">
       <section className="cart-header">

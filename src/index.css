@@ -667,3 +667,35 @@ a {
   color: white;
   border-color: #111827;
 }
+
+.empty-cart {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-cart-card {
+  background: white;
+  max-width: 550px;
+  width: 100%;
+  padding: 60px 30px;
+  text-align: center;
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+.empty-cart-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.empty-cart-card h1 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.empty-cart-card p {
+  color: #6b7280;
+  margin-bottom: 28px;
+}
