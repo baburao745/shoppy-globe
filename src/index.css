@@ -538,11 +538,18 @@ a {
     flex-direction: column;
     gap: 12px;
   }
+.nav a {
+  font-size: 14px;
+}
 
-  .nav {
-    gap: 15px;
-  }
+.logo {
+  font-size: 21px;
+}
 
+.header {
+  position: relative;
+}
+  
   .hero {
     min-height: 500px;
   }
