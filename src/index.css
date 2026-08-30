@@ -6,9 +6,17 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #f7f7fb;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 193, 7, 0.12),
+      rgba(198, 40, 40, 0.08),
+      rgba(255, 255, 255, 0.9)
+    );
+  background-attachment: fixed;
   color: #222;
 }
+
 
 a {
   text-decoration: none;
@@ -66,11 +74,13 @@ a {
   text-align: center;
   padding: 60px 20px;
   background:
-    radial-gradient(circle at 20% 20%, #dbeafe, transparent 35%),
-    radial-gradient(circle at 80% 30%, #fce7f3, transparent 35%),
-    linear-gradient(135deg, #eef2ff, #ffffff);
-}
-
+    linear-gradient(
+      135deg,
+      rgba(99, 102, 241, 0.12),
+      rgba(79, 70, 229, 0.08),
+      rgba(255, 255, 255, 0.9)
+    ),
+    linear-gradient(135deg, #fff8e1, #fff);
 .hero-content {
   max-width: 850px;
 }
