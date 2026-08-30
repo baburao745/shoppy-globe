@@ -66,10 +66,14 @@ function ProductDetail() {
       <section className="detail-card">
         <div className="detail-image">
           <img
-            src={product.thumbnail}
-            alt={product.title}
-            loading="lazy"
-          />
+  src={product.thumbnail}
+  alt={product.title}
+  loading="lazy"
+  onError={(event) => {
+    event.currentTarget.src =
+      "https://via.placeholder.com/500x500?text=Product";
+  }}
+/>
         </div>
 
         <div className="detail-info">
