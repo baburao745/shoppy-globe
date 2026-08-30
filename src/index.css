@@ -1333,3 +1333,38 @@ textarea {
     font-size: 50px;
   }
 }
+.footer {
+  margin-top: 70px;
+  padding: 45px 20px 25px;
+  text-align: center;
+  background: #172033;
+  color: white;
+}
+
+.footer-tricolour {
+  width: 180px;
+  height: 5px;
+  margin: 0 auto 25px;
+  background: linear-gradient(
+    90deg,
+    #ff9933 33%,
+    white 33%,
+    white 66%,
+    #138808 66%
+  );
+  border-radius: 10px;
+}
+
+.footer h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.footer p {
+  color: #d1d5db;
+  margin-bottom: 15px;
+}
+
+.footer-copy {
+  font-size: 13px;
+}
