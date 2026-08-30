@@ -1,0 +1,69 @@
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import CartItem from "../components/CartItem";
+
+function Cart() {
+  const items = useSelector((state) => state.cart.items);
+
+  const total = items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
+  if (items.length === 0) {
+    return (
+      <main className="cart-page empty-cart">
+        <h1>Your Cart is Empty 🛒</h1>
+
+        <p>
+          You haven't added any products yet.
+        </p>
+
+        <Link to="/products" className="shop-button">
+          Continue Shopping
+        </Link>
+      </main>
+    );
+  }
+
+  return (
+    <main className="cart-page">
+      <section className="cart-header">
+        <p>YOUR SHOPPING BAG</p>
+        <h1>Shopping Cart</h1>
+        <span>{items.length} item(s)</span>
+      </section>
+
+      <section className="cart-layout">
+        <div className="cart-items">
+          {items.map((item) => (
+            <CartItem
+              key={item.id}
+              item={item}
+            />
+          ))}
+        </div>
+
+        <aside className="cart-summary">
+          <h2>Order Summary</h2>
+
+          <div className="summary-row">
+            <span>Items</span>
+            <span>{items.length}</span>
+          </div>
+
+          <div className="summary-row total-row">
+            <strong>Total</strong>
+            <strong>${total.toFixed(2)}</strong>
+          </div>
+
+          <Link to="/checkout" className="checkout-button">
+            Proceed to Checkout
+          </Link>
+        </aside>
+      </section>
+    </main>
+  );
+}
+
+export default Cart;
