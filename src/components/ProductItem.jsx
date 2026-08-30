@@ -9,12 +9,18 @@ function ProductItem({ product }) {
     dispatch(addToCart(product));
   };
 
+  const handleImageError = (event) => {
+    event.currentTarget.src =
+      "https://via.placeholder.com/300x220?text=Product";
+  };
+
   return (
     <article className="product-card">
       <img
         src={product.thumbnail}
         alt={product.title}
         loading="lazy"
+        onError={handleImageError}
       />
 
       <div className="product-info">
@@ -25,13 +31,14 @@ function ProductItem({ product }) {
         </p>
 
         <p>⭐ {product.rating}</p>
-        <p className="product-discount">
-        {product.discountPercentage}% OFF
-</p>
 
-<p className="stock-status">
-  {product.stock > 0 ? "In Stock" : "Out of Stock"}
-</p>
+        <p className="product-discount">
+          {product.discountPercentage}% OFF
+        </p>
+
+        <p className="stock-status">
+          {product.stock > 0 ? "In Stock" : "Out of Stock"}
+        </p>
 
         <div className="product-actions">
           <Link to={`/product/${product.id}`}>
