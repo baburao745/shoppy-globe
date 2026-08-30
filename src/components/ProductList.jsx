@@ -32,13 +32,17 @@ function ProductList() {
     return matchesSearch && matchesCategory;
   });
 
-  if (loading) {
-    return (
-      <main className="products-page">
+ if (loading) {
+  return (
+    <main className="products-page loading-page">
+      <div className="loading-card">
+        <div className="loading-spinner"></div>
         <h2>Loading products...</h2>
-      </main>
-    );
-  }
+        <p>Getting the latest products for you.</p>
+      </div>
+    </main>
+  );
+}
 
   if (error) {
     return (
