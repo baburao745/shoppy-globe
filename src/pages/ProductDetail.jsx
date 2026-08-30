@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/cartSlice";
+import { formatPrice } from "../utils/currency";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -50,6 +51,7 @@ function ProductDetail() {
       <main className="product-detail-page">
         <h1>Product Not Found</h1>
         <p>{error}</p>
+
         <Link to="/products" className="back-link">
           ← Back to Products
         </Link>
@@ -66,14 +68,14 @@ function ProductDetail() {
       <section className="detail-card">
         <div className="detail-image">
           <img
-  src={product.thumbnail}
-  alt={product.title}
-  loading="lazy"
-  onError={(event) => {
-    event.currentTarget.src =
-      "https://via.placeholder.com/500x500?text=Product";
-  }}
-/>
+            src={product.thumbnail}
+            alt={product.title}
+            loading="lazy"
+            onError={(event) => {
+              event.currentTarget.src =
+                "https://via.placeholder.com/500x500?text=Product";
+            }}
+          />
         </div>
 
         <div className="detail-info">
@@ -93,7 +95,7 @@ function ProductDetail() {
             {product.description}
           </p>
 
-          <h2>₹{product.price}</h2>
+          <h2>{formatPrice(product.price)}</h2>
 
           <p>
             Discount: {product.discountPercentage}%

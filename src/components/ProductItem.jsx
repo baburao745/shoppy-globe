@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../store/cartSlice";
+import { formatPrice } from "../utils/currency";
 
 function ProductItem({ product }) {
   const dispatch = useDispatch();
@@ -26,9 +27,10 @@ function ProductItem({ product }) {
       <div className="product-info">
         <h3>{product.title}</h3>
 
-       <p className="product-price">
-          ₹{product.price}
-       </p>
+        <p className="product-price">
+          {formatPrice(product.price)}
+        </p>
+
         <p>⭐ {product.rating}</p>
 
         <p className="product-discount">
@@ -44,7 +46,10 @@ function ProductItem({ product }) {
             View Details
           </Link>
 
-          <button onClick={handleAddToCart}>
+          <button
+            onClick={handleAddToCart}
+            disabled={product.stock <= 0}
+          >
             Add to Cart
           </button>
         </div>

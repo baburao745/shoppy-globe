@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearCart } from "../store/cartSlice";
+import { formatPrice } from "../utils/currency";
 
 function Checkout() {
   const dispatch = useDispatch();
@@ -50,7 +51,10 @@ function Checkout() {
     return (
       <main className="checkout-page empty-checkout">
         <h1>Your cart is empty</h1>
-        <p>Add some products before checking out.</p>
+
+        <p>
+          Add some products before checking out.
+        </p>
       </main>
     );
   }
@@ -60,6 +64,7 @@ function Checkout() {
       <section className="checkout-card">
         <div className="checkout-heading">
           <p>ALMOST THERE</p>
+
           <h1>Checkout</h1>
         </div>
 
@@ -72,7 +77,10 @@ function Checkout() {
         {!message && (
           <>
             <form onSubmit={handleSubmit}>
-              <label htmlFor="name">Full Name</label>
+              <label htmlFor="name">
+                Full Name
+              </label>
+
               <input
                 id="name"
                 name="name"
@@ -82,7 +90,10 @@ function Checkout() {
                 placeholder="Enter your full name"
               />
 
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">
+                Email
+              </label>
+
               <input
                 id="email"
                 name="email"
@@ -92,7 +103,10 @@ function Checkout() {
                 placeholder="Enter your email"
               />
 
-              <label htmlFor="address">Address</label>
+              <label htmlFor="address">
+                Address
+              </label>
+
               <textarea
                 id="address"
                 name="address"
@@ -120,14 +134,19 @@ function Checkout() {
                   </span>
 
                   <span>
-                    ${(item.price * item.quantity).toFixed(2)}
+                    {formatPrice(
+                      item.price * item.quantity
+                    )}
                   </span>
                 </div>
               ))}
 
               <div className="checkout-total">
                 <strong>Total</strong>
-                <strong>${total.toFixed(2)}</strong>
+
+                <strong>
+                  {formatPrice(total)}
+                </strong>
               </div>
             </aside>
           </>
