@@ -719,3 +719,14 @@ a {
   background: #4f46e5;
   transform: translateY(-2px);
 }
+.error-label {
+  color: #6366f1;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 15px 0 8px;
+}
+
+.not-found-card h1 {
+  margin-bottom: 15px;
+}

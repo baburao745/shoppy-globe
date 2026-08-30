@@ -6,14 +6,15 @@ function NotFound() {
   return (
     <main className="not-found-page">
       <div className="not-found-card">
-        <div className="error-icon">🔍</div>
+        <div className="error-icon">🛍️</div>
 
-        <h1>404</h1>
+        <p className="error-label">ERROR 404</p>
 
-        <h2>Page Not Found</h2>
+        <h1>Page Not Found</h1>
 
         <p>
-          Sorry, we couldn't find the page you're looking for.
+          Sorry, the page you are looking for doesn't exist
+          or may have been moved.
         </p>
 
         <p className="invalid-route">
