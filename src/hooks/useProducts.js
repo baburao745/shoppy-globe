@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function useProducts(url = "https://dummyjson.com/products") {
+function useProducts(url = "http://localhost:5000/products") {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -19,7 +19,8 @@ function useProducts(url = "https://dummyjson.com/products") {
 
         const data = await response.json();
 
-        setProducts(data.products || []);
+        // Our backend returns the products directly as an array
+        setProducts(Array.isArray(data) ? data : data.products || []);
       } catch (err) {
         setError(err.message);
         setProducts([]);

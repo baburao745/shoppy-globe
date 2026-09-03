@@ -19,7 +19,7 @@ function ProductDetail() {
         setError("");
 
         const response = await fetch(
-          `https://dummyjson.com/products/${id}`
+          `http://localhost:5000/products/${id}`
         );
 
         if (!response.ok) {
@@ -41,16 +41,20 @@ function ProductDetail() {
   if (loading) {
     return (
       <main className="product-detail-page">
-        <h2>Loading product...</h2>
+        <div className="loading-card">
+          <div className="loading-spinner"></div>
+          <h2>Loading product...</h2>
+          <p>Please wait...</p>
+        </div>
       </main>
     );
   }
 
-  if (error) {
+  if (error || !product) {
     return (
       <main className="product-detail-page">
         <h1>Product Not Found</h1>
-        <p>{error}</p>
+        <p>{error || "The requested product could not be found."}</p>
 
         <Link to="/products" className="back-link">
           ← Back to Products
@@ -59,17 +63,50 @@ function ProductDetail() {
     );
   }
 
+  const productImage =
+    product.image ||
+    "https://via.placeholder.com/500x500?text=Product";
+
+  const discount = product.discountPercentage || 0;
+
+  const discountedPrice =
+    product.price - (product.price * discount) / 100;
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        id: product._id,
+        name: product.name,
+        price: discountedPrice,
+        image: product.image,
+        description: product.description,
+        stock: product.stock,
+      })
+    );
+  };
+
   return (
     <main className="product-detail-page">
+
+      {/* Back Button */}
       <Link to="/products" className="back-link">
         ← Back to Products
       </Link>
 
       <section className="detail-card">
+
+        {/* Product Image */}
         <div className="detail-image">
+
+          {discount > 0 && (
+            <span className="discount-badge">
+              🔥 {discount}% OFF
+            </span>
+          )}
+
           <img
-            src={product.thumbnail}
-            alt={product.title}
+            src={productImage}
+            alt={product.name}
             loading="lazy"
             onError={(event) => {
               event.currentTarget.src =
@@ -78,37 +115,64 @@ function ProductDetail() {
           />
         </div>
 
+        {/* Product Information */}
         <div className="detail-info">
-          <span>{product.category}</span>
 
-          <h1>{product.title}</h1>
-
-          <p className="detail-brand">
-            Brand: {product.brand || "N/A"}
+          {/* Brand */}
+          <p className="product-brand">
+            {product.brand}
           </p>
 
-          <p className="detail-rating">
-            ⭐ {product.rating}
-          </p>
+          {/* Product Name */}
+          <h1>{product.name}</h1>
 
+          {/* Rating */}
+          <div className="detail-rating">
+            ⭐ {product.rating} / 5
+          </div>
+
+          {/* Description */}
           <p className="detail-description">
             {product.description}
           </p>
 
-          <h2>{formatPrice(product.price)}</h2>
+          {/* Discount */}
+          {discount > 0 && (
+            <p className="detail-discount">
+              🔥 {discount}% OFF
+            </p>
+          )}
 
-          <p>
-            Discount: {product.discountPercentage}%
-          </p>
+          {/* Price */}
+          <h2 className="detail-price">
+            {formatPrice(discountedPrice)}
+          </h2>
 
+          {/* Stock */}
           <p className="stock-status">
             {product.stock > 0
-              ? `${product.stock} items available`
-              : "Out of stock"}
+              ? `📦 ${product.stock} items available`
+              : "❌ Out of stock"}
           </p>
 
+          {/* Availability */}
+          <p className="detail-availability">
+            {product.availabilityStatus}
+          </p>
+
+          {/* Minimum Order */}
+          <p className="minimum-order">
+            Minimum order: {product.minimumOrderQuantity}
+          </p>
+
+          {/* SKU */}
+          <p className="product-sku">
+            SKU: {product.sku}
+          </p>
+
+          {/* Add To Cart */}
           <button
-            onClick={() => dispatch(addToCart(product))}
+            onClick={handleAddToCart}
             disabled={product.stock <= 0}
             className="add-cart-button"
           >
@@ -116,6 +180,7 @@ function ProductDetail() {
               ? "Add to Cart 🛒"
               : "Out of Stock"}
           </button>
+
         </div>
       </section>
     </main>

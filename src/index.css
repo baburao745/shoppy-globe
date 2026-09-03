@@ -1368,3 +1368,336 @@ textarea {
 .footer-copy {
   font-size: 13px;
 }
+/* ============================= */
+/* Product Card Add To Cart */
+/* ============================= */
+
+.product-card > button {
+  width: 100%;
+  padding: 14px 20px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.product-card > button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
+}
+
+.product-card > button:active {
+  transform: translateY(0);
+}
+
+.product-card > button:disabled {
+  background: #9ca3af;
+  color: white;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Keep product card spacing clean */
+.product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card > a {
+  flex: 1;
+}
+/* ============================= */
+/* Header Login & Register */
+/* ============================= */
+
+.login-link,
+.register-link {
+  padding: 9px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.login-link {
+  border: 1px solid #2563eb;
+  color: #2563eb;
+}
+
+.login-link:hover {
+  background: #2563eb;
+  color: white;
+}
+
+.register-link {
+  background: #2563eb;
+  color: white;
+}
+
+.register-link:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+/* ================================= */
+/* Indian Style Login & Register */
+/* ================================= */
+
+.auth-page {
+  min-height: 82vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 55px 20px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255, 153, 51, 0.12) 0, transparent 25%),
+    radial-gradient(circle at 90% 80%, rgba(19, 67, 120, 0.12) 0, transparent 25%),
+    #fffaf3;
+}
+
+/* Decorative Indian-inspired circles */
+.auth-page::before,
+.auth-page::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.auth-page::before {
+  width: 260px;
+  height: 260px;
+  top: -100px;
+  left: -80px;
+  border: 35px solid rgba(255, 153, 51, 0.08);
+}
+
+.auth-page::after {
+  width: 300px;
+  height: 300px;
+  right: -120px;
+  bottom: -130px;
+  border: 40px solid rgba(19, 67, 120, 0.07);
+}
+
+/* Main Card */
+
+.auth-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 450px;
+  padding: 42px;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 20px;
+  border-top: 5px solid #ff9933;
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.10),
+    0 3px 10px rgba(19, 67, 120, 0.08);
+  box-sizing: border-box;
+}
+
+/* Header */
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.auth-header p {
+  margin: 0 0 9px;
+  color: #ff7a00;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.auth-header h1 {
+  margin: 0 0 8px;
+  color: #133f70;
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.auth-header span {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Form */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #26384d;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 15px;
+  border: 1px solid #d8dee7;
+  border-radius: 10px;
+  outline: none;
+  background: #fffdf9;
+  color: #1f2937;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: 0.2s ease;
+}
+
+.form-group input::placeholder {
+  color: #9ca3af;
+}
+
+.form-group input:focus {
+  border-color: #ff9933;
+  box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.14);
+  background: white;
+}
+
+/* Login / Register Button */
+
+.auth-button {
+  width: 100%;
+  padding: 14px 20px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    #ff9933,
+    #f47721
+  );
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(244, 119, 33, 0.25);
+  transition: all 0.2s ease;
+}
+
+.auth-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 20px rgba(244, 119, 33, 0.32);
+}
+
+.auth-button:active {
+  transform: translateY(0);
+}
+
+.auth-button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Message */
+
+.auth-message {
+  margin: 0 0 18px;
+  padding: 11px 12px;
+  border-radius: 8px;
+  background: #fff4e6;
+  border-left: 4px solid #ff9933;
+  color: #8a4b08;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Footer */
+
+.auth-footer {
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid #eee5da;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.auth-footer a {
+  color: #133f70;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  color: #ff7a00;
+  text-decoration: underline;
+}
+
+/* Small decorative line */
+
+.auth-card::before {
+  content: "✦  ✦  ✦";
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #138808;
+  font-size: 10px;
+  letter-spacing: 6px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .auth-page {
+    padding: 35px 15px;
+  }
+
+  .auth-card {
+    padding: 35px 23px;
+    border-radius: 16px;
+  }
+
+  .auth-header h1 {
+    font-size: 29px;
+  }
+}
+/* ============================= */
+/* User & Logout */
+/* ============================= */
+
+.welcome-user {
+  color: #133f70;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.logout-button {
+  padding: 9px 16px;
+  border: 1px solid #dc2626;
+  border-radius: 8px;
+  background: white;
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-button:hover {
+  background: #dc2626;
+  color: white;
+}

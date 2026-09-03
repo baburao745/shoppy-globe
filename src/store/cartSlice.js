@@ -9,15 +9,24 @@ const cartSlice = createSlice({
 
   reducers: {
     addToCart: (state, action) => {
+      const product = action.payload;
+
+      const productId = product._id || product.id;
+
       const existingItem = state.items.find(
-        (item) => item.id === action.payload.id
+        (item) => item.id === productId
       );
 
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
         state.items.push({
-          ...action.payload,
+          id: productId,
+          name: product.name || product.title,
+          price: product.price,
+          image: product.image || product.thumbnail,
+          description: product.description,
+          stock: product.stock,
           quantity: 1,
         });
       }

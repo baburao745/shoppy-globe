@@ -38,6 +38,8 @@ function Cart() {
 
   return (
     <main className="cart-page">
+
+      {/* Cart Header */}
       <section className="cart-header">
         <p>YOUR SHOPPING BAG</p>
 
@@ -48,6 +50,7 @@ function Cart() {
 
       <section className="cart-layout">
 
+        {/* Cart Items */}
         <div className="cart-items">
           {items.map((item) => (
             <CartItem
@@ -57,13 +60,29 @@ function Cart() {
           ))}
         </div>
 
+        {/* Order Summary */}
         <aside className="cart-summary">
+
           <h2>Order Summary</h2>
 
           <div className="summary-row">
             <span>Items</span>
             <span>{totalItems}</span>
           </div>
+
+          <div className="summary-row">
+            <span>Subtotal</span>
+            <span>{formatPrice(total)}</span>
+          </div>
+
+          <div className="summary-row">
+            <span>Delivery</span>
+            <span className="free-delivery">
+              FREE
+            </span>
+          </div>
+
+          <div className="summary-divider"></div>
 
           <div className="summary-row total-row">
             <strong>Total</strong>
@@ -77,8 +96,16 @@ function Cart() {
             to="/checkout"
             className="checkout-button"
           >
-            Proceed to Checkout
+            Proceed to Checkout →
           </Link>
+
+          <Link
+            to="/products"
+            className="continue-shopping"
+          >
+            ← Continue Shopping
+          </Link>
+
         </aside>
 
       </section>

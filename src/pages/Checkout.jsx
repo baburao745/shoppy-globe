@@ -18,11 +18,19 @@ function Checkout() {
 
   const [message, setMessage] = useState("");
 
+  // Calculate total
   const total = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
 
+  // Calculate total quantity
+  const totalItems = items.reduce(
+    (sum, item) => sum + item.quantity,
+    0
+  );
+
+  // Handle input changes
   const handleChange = (event) => {
     setForm({
       ...form,
@@ -30,6 +38,7 @@ function Checkout() {
     });
   };
 
+  // Place order
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -40,34 +49,57 @@ function Checkout() {
 
     setMessage("Order placed successfully! 🎉");
 
+    // Clear cart after successful order
     dispatch(clearCart());
 
+    // Go back to home page
     setTimeout(() => {
       navigate("/");
     }, 1500);
   };
 
+  // Empty cart
   if (items.length === 0 && !message) {
     return (
       <main className="checkout-page empty-checkout">
-        <h1>Your cart is empty</h1>
+        <div className="empty-cart-card">
+          <div className="empty-cart-icon">🛒</div>
 
-        <p>
-          Add some products before checking out.
-        </p>
+          <h1>Your Cart is Empty</h1>
+
+          <p>
+            Add some products before checking out.
+          </p>
+
+          <button
+            type="button"
+            className="shop-button"
+            onClick={() => navigate("/products")}
+          >
+            Start Shopping →
+          </button>
+        </div>
       </main>
     );
   }
 
   return (
     <main className="checkout-page">
+
       <section className="checkout-card">
+
+        {/* Heading */}
         <div className="checkout-heading">
-          <p>ALMOST THERE</p>
+          <p>ALMOST THERE 🇮🇳</p>
 
           <h1>Checkout</h1>
+
+          <span>
+            Complete your details to place your order
+          </span>
         </div>
 
+        {/* Success / Error Message */}
         {message && (
           <div className="order-message">
             {message}
@@ -75,72 +107,140 @@ function Checkout() {
         )}
 
         {!message && (
-          <>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="name">
-                Full Name
-              </label>
+          <div className="checkout-layout">
 
-              <input
-                id="name"
-                name="name"
-                type="text"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Enter your full name"
-              />
+            {/* Customer Details */}
+            <div className="checkout-form-section">
 
-              <label htmlFor="email">
-                Email
-              </label>
+              <h2>Delivery Details</h2>
 
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="Enter your email"
-              />
+              <form onSubmit={handleSubmit}>
 
-              <label htmlFor="address">
-                Address
-              </label>
+                {/* Name */}
+                <div className="checkout-form-group">
+                  <label htmlFor="name">
+                    Full Name
+                  </label>
 
-              <textarea
-                id="address"
-                name="address"
-                value={form.address}
-                onChange={handleChange}
-                placeholder="Enter your delivery address"
-                rows="4"
-              />
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Enter your full name"
+                  />
+                </div>
 
-              <button type="submit">
-                Place Order
-              </button>
-            </form>
+                {/* Email */}
+                <div className="checkout-form-group">
+                  <label htmlFor="email">
+                    Email Address
+                  </label>
 
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="Enter your email"
+                  />
+                </div>
+
+                {/* Address */}
+                <div className="checkout-form-group">
+                  <label htmlFor="address">
+                    Delivery Address
+                  </label>
+
+                  <textarea
+                    id="address"
+                    name="address"
+                    value={form.address}
+                    onChange={handleChange}
+                    placeholder="Enter your complete delivery address"
+                    rows="5"
+                  />
+                </div>
+
+                {/* Error message */}
+                {message && (
+                  <p className="checkout-error">
+                    {message}
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  className="place-order-button"
+                >
+                  Place Order 🎉
+                </button>
+
+              </form>
+            </div>
+
+            {/* Order Summary */}
             <aside className="checkout-summary">
+
               <h2>Order Summary</h2>
 
-              {items.map((item) => (
-                <div
-                  className="checkout-item"
-                  key={item.id}
-                >
-                  <span>
-                    {item.title} × {item.quantity}
-                  </span>
+              <p className="checkout-items-count">
+                {totalItems} item(s)
+              </p>
 
-                  <span>
-                    {formatPrice(
-                      item.price * item.quantity
-                    )}
-                  </span>
-                </div>
-              ))}
+              {/* Products */}
+              <div className="checkout-products">
 
+                {items.map((item) => (
+                  <div
+                    className="checkout-item"
+                    key={item.id}
+                  >
+                    <div>
+                      <strong>
+                        {item.name || item.title || "Product"}
+                      </strong>
+
+                      <span>
+                        × {item.quantity}
+                      </span>
+                    </div>
+
+                    <strong>
+                      {formatPrice(
+                        item.price * item.quantity
+                      )}
+                    </strong>
+                  </div>
+                ))}
+
+              </div>
+
+              <div className="checkout-divider"></div>
+
+              {/* Subtotal */}
+              <div className="checkout-summary-row">
+                <span>Subtotal</span>
+
+                <span>
+                  {formatPrice(total)}
+                </span>
+              </div>
+
+              {/* Delivery */}
+              <div className="checkout-summary-row">
+                <span>Delivery</span>
+
+                <strong className="free-delivery">
+                  FREE
+                </strong>
+              </div>
+
+              <div className="checkout-divider"></div>
+
+              {/* Total */}
               <div className="checkout-total">
                 <strong>Total</strong>
 
@@ -148,10 +248,14 @@ function Checkout() {
                   {formatPrice(total)}
                 </strong>
               </div>
+
             </aside>
-          </>
+
+          </div>
         )}
+
       </section>
+
     </main>
   );
 }
