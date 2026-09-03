@@ -1,51 +1,95 @@
-# 🛍️ ShoppyGlobe E-commerce
+# ShoppyGlobe E-Commerce Application
 
-A React-based e-commerce application built with Vite.
+ShoppyGlobe is a full-stack e-commerce application built using React, Node.js, Express.js, and MongoDB.
 
 ## Features
 
 - Product listing
 - Product details
+- Product search
+- Category filtering
 - Shopping cart
-- Add and remove products
-- Increase and decrease quantity
-- Checkout
-- Order placement
-- 404 error page
-- Responsive design
-- Redux state management
-- React Router
-- Product data from DummyJSON API
+- Add, update and remove cart items
+- User registration
+- User login
+- JWT authentication
+- Protected cart APIs
+- Password hashing using bcrypt
+- MongoDB database
+- Checkout page
+- Currency conversion
+- Product ratings and discounts
+- Product stock and availability information
+- Error handling and validation
 
-## Technologies
+## Technologies Used
 
+### Frontend
 - React
-- Vite
-- JavaScript
 - Redux Toolkit
-- React Redux
 - React Router
+- JavaScript
 - CSS
 
-## API
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JSON Web Token (JWT)
+- bcryptjs
+- CORS
+- dotenv
 
-Products are fetched from:
+## API Endpoints
 
-https://dummyjson.com/products
+### Authentication
 
-## How to Run
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/register` | Register a new user |
+| POST | `/login` | Login and receive JWT token |
 
-Install dependencies:
+### Products
 
-```bash
-npm install
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/products` | Get all products |
+| GET | `/products/:id` | Get a product by ID |
 
+### Cart
 
-The assignment specifically requires a README and a GitHub repository link in the README. :contentReference[oaicite:0]{index=0}
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/cart` | Add product to cart |
+| PUT | `/cart/:id` | Update cart quantity |
+| DELETE | `/cart/:id` | Remove cart item |
 
-Save it, then run:
+Cart APIs require JWT authentication.
 
-```powershell
-git add README.md
+## Product Data
 
+Each product contains information such as:
+
+- Name
+- Price
+- Description
+- Stock
+- Image
+- Category
+- Brand
+- Rating
+- Discount percentage
+- Availability status
+- Minimum order quantity
+- SKU
+
+## Authentication
+
+The application uses JWT-based authentication.
+
+After successful login, the server returns a JWT token. Protected cart requests use the token in the request header:
+
+```text
+Authorization: Bearer <jwt_token>
 git repo link(https://github.com/baburao745/shoppy-globe.git)
